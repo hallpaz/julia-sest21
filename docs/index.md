@@ -41,10 +41,13 @@ Neste curso, usaremos um ambiente próprio de Julia chamado Pluto. Pluto é um n
 
 #### Acesse aqui o Notebook Primeiros Passos em Julia.
 
+– SIR
+
 ## Onde aprender mais?
 
 * Documentação
 * Exercism Julia
+* Think Julia
 
 ------
 
