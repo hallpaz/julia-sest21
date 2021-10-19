@@ -1,4 +1,7 @@
-# Mini curso sobre a linguagem de programação Julia
+---
+title: "Mini curso sobre a linguagem de programação Julia"
+---
+
 ### Semana da Estatística UFSCar/USP 2021
 
 ## [1 Introdução](introducao.md)
