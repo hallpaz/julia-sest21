@@ -1,43 +1,27 @@
-# Ementa
+# Mini curso sobre a linguagem de programação Julia
+### Semana da Estatística UFSCar/USP 2021
 
-# [1 Introdução](introducao.md)
+## [1 Introdução](introducao.md)
 
 * Por que Julia?
 * Aplicações de Julia
 * Onde buscar mais sobre a linguagem?
 
-# [2 Programando em Julia](julianapratica.md)
+## [2 Programando em Julia](julianapratica.md)
 
-## 2.1 Prepare seu ambiente de desenvolvimento
-
-##### Download
-Faça download da última versão estável em [julialang.org/downloads/](https://julialang.org/downloads/)
-
-##### Editor de Texto | Ambiente de Desenvolvimento
-Como qualquer linguagem de programação de propósito geral, você pode escrever código em Julia em qualquer editor de texto. Contudo, atualmente, o Visual Studio Code é o editor que aparenta ter melhor suporte para a linguagem, possibilitando integração para execução do código e a gestão de dependências de projetos tal como uma IDE.
-
-Neste curso, usaremos um ambiente próprio de Julia chamado Pluto. Pluto é um notebook, que nos permite mesclar código e texto tal como o Jupyter ou R-Markdown. Pluto é um notebook reativo e com recursos interessantes para finalidade didática, além, é claro de ser desenvolvido em Julia.
-
-###### Para instalar Pluto:
-
-## 2.2 Primeiros passos
-
-#### Acesse aqui o Notebook Primeiros Passos em Julia.
-
-– SIR
-
+* Preparando o ambiente de desenvolvimento
+* "Olá Mundo"
+* Primeiros passos...de verdade!
 
 ## [3 Um pouco de análise de dados](analisededados.md)
 
+* CSV
+* DataFrames
+* Plots
 
-
-## Onde aprender mais?
+## [4 Onde aprender mais?](aprendermais.md)
 
 * Documentação
 * Exercism Julia
 * Think Julia
-
-------
-
-# Estatística com Julia
 
