@@ -1,12 +1,4 @@
-# Ementa
-
-# [1 Introdução](introducao.md)
-
-* Por que Julia?
-* Aplicações de Julia
-* Onde buscar mais sobre a linguagem?
-
-# [2 Programando em Julia](julianapratica.md)
+# 2 Programando em Julia
 
 ## 2.1 Prepare seu ambiente de desenvolvimento
 
@@ -24,20 +16,4 @@ Neste curso, usaremos um ambiente próprio de Julia chamado Pluto. Pluto é um n
 
 #### Acesse aqui o Notebook Primeiros Passos em Julia.
 
-– SIR
-
-
-## [3 Um pouco de análise de dados](analisededados.md)
-
-
-
-## Onde aprender mais?
-
-* Documentação
-* Exercism Julia
-* Think Julia
-
-------
-
-# Estatística com Julia
-
+- SIR
