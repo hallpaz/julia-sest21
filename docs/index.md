@@ -32,4 +32,5 @@ Objetivo
 * Documentação
 * Exercism Julia
 * Think Julia
+* [MIT Computational Thinking](https://computationalthinking.mit.edu/Spring21/)
 

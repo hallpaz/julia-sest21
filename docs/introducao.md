@@ -12,8 +12,8 @@ title: "1 Introdução"
 
 
 * Traduz de forma mais natural a comunicação científica em instruções de programas
-  
 
+* Interoperável com outras linguagens como Python e R.
 
 
 ## 1.2 Aplicações de Julia

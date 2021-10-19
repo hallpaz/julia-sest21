@@ -33,7 +33,9 @@ Neste curso, usaremos um ambiente próprio de Julia chamado Pluto. Pluto é um n
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IAF8DjrQSSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Sim, é você pode instalar [IJulia e usar Jupyter notebook](https://github.com/JuliaLang/IJulia.jl) também. Inclusive, é possível usar [Julia no Google Colab](https://colab.research.google.com/github/ageron/julia_notebooks/blob/master/Julia_Colab_Notebook_Template.ipynb).
+Sim, é você pode instalar [IJulia e usar Jupyter notebook](https://github.com/JuliaLang/IJulia.jl) também. Inclusive, é possível usar [Julia no Google Colab](https://colab.research.google.com/github/ageron/julia_notebooks/blob/master/Julia_Colab_Notebook_Template.ipynb)$^1$.
+
+1. *[Saiba mais sobre o Google Colab](https://youtu.be/_mIwsA2ddSc)*
 
 #### Para instalar Pluto:
 
@@ -49,6 +51,7 @@ TODO: preencher
 * [Exercism Julia](https://exercism.org/tracks/julia)
 * [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
 * [Canal Abel Siqueira](https://www.youtube.com/channel/UCrHWmb1a2JW50QovKgkcKCQ)
+* [MIT Computational Thinking](https://computationalthinking.mit.edu/Spring21/)
 
 * Playlist Julia na Prática
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL5TJqBvpXQv4cAynxaIyclmpZ95g-gtqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
