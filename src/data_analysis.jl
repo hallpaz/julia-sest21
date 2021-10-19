@@ -226,12 +226,13 @@ end
 df_partidos_v2 = @chain df_espectro begin
 	select(Between(:Espectro, :nrow), :Espectro => (x -> cor.(x)) => :cor)	
 	sort(:nrow, rev=true)
+	unique()
 end
 
 # ╔═╡ a9d3339a-fd3a-4f1e-95bb-0b6c6cc24b4a
 Plots.bar(df_partidos_v2.nrow, 
 			xticks = (1:length(df_partidos_v2.SG_PARTIDO), df_partidos_v2.SG_PARTIDO),
-			fillcolor= [:red, :blue],#[k for k in df_partidos_v2.cor],
+			fillcolor= permutedims(df_partidos_v2.cor),
 			title="Partido mais votado (prefeito) no Brasil",
 			xrotation=90,
 			label="vitórias"
@@ -239,6 +240,12 @@ Plots.bar(df_partidos_v2.nrow,
 
 # ╔═╡ 9509a2c9-33fd-4b7f-a7f6-2e14ffdec221
 df_partidos_v2.cor
+
+# ╔═╡ 939a62b3-9bc3-484c-b84b-7c6f08250316
+df_partidos_v2.SG_PARTIDO
+
+# ╔═╡ b46d40dd-1e3e-4ccd-b10d-07fddb450f04
+Plots.bar(1:4, xticks=(1:4, ["A", "B", "X", "Y"]), fillcolor=[:purple :green :blue :red])
 
 # ╔═╡ 3acef225-8e7a-4191-9039-5fc3e9f014e0
 md"""
@@ -1350,6 +1357,8 @@ version = "0.9.1+5"
 # ╠═89b14d8f-1544-44df-8196-c98006480c82
 # ╠═a9d3339a-fd3a-4f1e-95bb-0b6c6cc24b4a
 # ╠═9509a2c9-33fd-4b7f-a7f6-2e14ffdec221
+# ╠═939a62b3-9bc3-484c-b84b-7c6f08250316
+# ╠═b46d40dd-1e3e-4ccd-b10d-07fddb450f04
 # ╠═3acef225-8e7a-4191-9039-5fc3e9f014e0
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
