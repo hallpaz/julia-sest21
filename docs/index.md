@@ -5,10 +5,6 @@ title: "Mini curso sobre a linguagem de programação Julia"
 ### Semana da Estatística UFSCar/USP 2021
 
 
-Olá, meu nome é Hallison....
-
-Objetivo
-
 ## [1 Introdução](introducao.md)
 
 * Por que Julia?
@@ -27,10 +23,4 @@ Objetivo
 * DataFrames
 * Plots
 
-## [4 Onde aprender mais?](aprendermais.md)
-
-* Documentação
-* Exercism Julia
-* Think Julia
-* [MIT Computational Thinking](https://computationalthinking.mit.edu/Spring21/)
 

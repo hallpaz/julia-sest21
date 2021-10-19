@@ -1,5 +1,6 @@
 ---
 title: "1 Introdução"
+order: 1
 ---
 
 ## 1.1 Por que Julia?
@@ -10,7 +11,6 @@ title: "1 Introdução"
 * Linguagem moderna e que incorpora conceitos por trás de Python, R, MatLab
 * Busca facilidade em escrever **e** [desempenho na execução](https://julialang.org/benchmarks/) (audaciosa!)
 
-
 * Traduz de forma mais natural a comunicação científica em instruções de programas
 
 * Interoperável com outras linguagens como Python e R.
@@ -18,10 +18,11 @@ title: "1 Introdução"
 
 ## 1.2 Aplicações de Julia
 
-* Computação científica (equações diferenciais, simmulações de fluidos, astronomia, processamento de imagens...)
+* Computação científica (equações diferenciais, [simulações de fluidos](https://julialang.org/blog/2021/08/sharks/), astronomia, processamento de imagens...)
 * Ciência de dados
 * Aprendizado de máquina
 * Computação paralela
+* [Qualquer coisa...](https://www.instagram.com/p/CQB1uiOp6_8/)
 
 
 ## 1.3 Extras e curiosidades

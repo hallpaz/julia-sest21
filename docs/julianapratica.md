@@ -1,5 +1,6 @@
 ---
 title: "2 Programando em Julia"
+order: 2
 ---
 
 ## 2.1 Prepare seu ambiente de desenvolvimento
@@ -37,13 +38,13 @@ Sim, é você pode instalar [IJulia e usar Jupyter notebook](https://github.com/
 
 1. *[Saiba mais sobre o Google Colab](https://youtu.be/_mIwsA2ddSc)*
 
-#### Para instalar Pluto:
+#### Para instalar Pluto
 
-TODO: preencher
+Em caso de dúvida na instalação de Julia e Pluto, [siga as instruções aqui](https://computationalthinking.mit.edu/Spring21/installation/).
 
 ## 2.2 Primeiros passos
 
-#### Acesse aqui o Notebook Primeiros Passos em Julia.
+#### [Acesse aqui o Notebook Primeiros Passos em Julia](/notebooks/primeirospassos.html)
 
 ## 2.3 Onde aprender mais
 
