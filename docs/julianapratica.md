@@ -42,3 +42,14 @@ TODO: preencher
 ## 2.2 Primeiros passos
 
 #### Acesse aqui o Notebook Primeiros Passos em Julia.
+
+## 2.3 Onde aprender mais
+
+* [Documentação da linguagem](https://docs.julialang.org/en/v1/)
+* [Exercism Julia](https://exercism.org/tracks/julia)
+* [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+* [Canal Abel Siqueira](https://www.youtube.com/channel/UCrHWmb1a2JW50QovKgkcKCQ)
+
+* Playlist Julia na Prática
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL5TJqBvpXQv4cAynxaIyclmpZ95g-gtqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+

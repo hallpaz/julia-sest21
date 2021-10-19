@@ -13,7 +13,7 @@ title: "1 Introdução"
 
 * Traduz de forma mais natural a comunicação científica em instruções de programas
   
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qGW0GT1rCvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 ## 1.2 Aplicações de Julia
@@ -26,8 +26,9 @@ title: "1 Introdução"
 
 ## 1.3 Extras e curiosidades
 
-* JuliaCon 2016 | The Two Cultures of Programming | Joshua Ballanco
-<iframe width="560" height="315" src="https://www.youtube.com/embed/C3iR_PknlFc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+* [JuliaCon 2016 - The Two Cultures of Programming - Joshua Ballanco](https://youtu.be/C3iR_PknlFc)
 
-* fast.ai's Jeremy Howard on Why Python is not the future of machine learning - Gradient Dissent Clip
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4I1ejhQqD4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+* fast.ai's Jeremy Howard on [Why Python is not the future of machine learning](https://youtu.be/4I1ejhQqD4c) - Gradient Dissent Clip
+
+* A programming language to heal the planet together: Julia - Alan Edelman - TEDxMIT
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qGW0GT1rCvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
