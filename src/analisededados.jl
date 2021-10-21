@@ -38,11 +38,12 @@ end
 
 # ╔═╡ ad04f67f-2852-472c-a8c3-ec5dc3f68e6a
 md"""
-#### Exercício
+#### Exercícios
 
-1. Como obter o endereço de uma forma mais genérica?
+1. Como obter o endereço de uma forma mais genérica? Verifique as fuções **cd**, **pwd** e **joinpath**; *resposta na célula oculta abaixo.*
 2. Como fazer o download dos arquivos pelo código?
 3. Como ler um arquivo Zip?
+
 """
 
 # ╔═╡ e9ef3a97-3732-4ca8-9b4a-ef77b7a5c175
@@ -53,7 +54,7 @@ end
 
 # ╔═╡ eb67b3ce-993b-4f7e-9f7f-dec89a21d009
 md"""
-# Lendo o conjunto de dados
+# Baixando o conjunto de dados
 """
 
 # ╔═╡ 93c33e9a-b6ce-4cab-8126-3fa4a99c03eb
@@ -61,6 +62,7 @@ md"""
 ```julia
 Downloads.download(URL_CANDIDATOS20200, joinpath(DATA_DIR, "cand2020.zip"))
 ```
+
 Lendo um zip: [https://csv.juliadata.org/stable/examples.html#zip_example]()
 """
 
@@ -74,7 +76,7 @@ path_resultados2020 = joinpath(
 # ╔═╡ 1aec1f8f-2e27-46c9-be9d-d779869cc516
 readlines(path_resultados2020)[1:5]
 
-# ╔═╡ 5c0be0fa-8314-4304-8691-c7090bb27f2b
+# ╔═╡ 7b1312fc-292b-488b-a653-b0661837b0b8
 md"""
 ### Criando um DataFrame
 
@@ -85,6 +87,16 @@ md"""
 
 Consultar: [https://dataframes.juliadata.org/stable/](https://dataframes.juliadata.org/stable/)
 """
+
+# ╔═╡ dffbdc65-38cb-4466-b2b5-d4977a544611
+df_2020 = DataFrame(CSV.File(open(read, path_resultados2020, enc"ISO-8859-1")))
+
+# ╔═╡ 5467bec3-ba98-4405-a109-28aed6c079a7
+# first(df_2020, 5)
+last(df_2020, 5)
+
+# ╔═╡ 6c6b5e7c-81f1-4301-8433-75c66761e535
+names(df_2020)
 
 # ╔═╡ d8984c56-c253-4c09-9693-d05bc5ae502b
 md"""
@@ -112,11 +124,30 @@ Mostre que não há candidatos com nome social (**NM\_SOCIAL\_CANDIDATO**) difer
 #df_2020[df_2020.NM_SOCIAL_CANDIDATO .!= "#NULO#", :]
 #df_2020[df_candidatos2020.NM_URNA_CANDIDATO .== "ERIKA HILTON", :]
 
-# ╔═╡ 464d14bc-96a0-413f-b716-2d4807388587
-md"""
-#### Selecionando os candidatos a prefeito
+# ╔═╡ 8795beee-3124-425d-9b6a-1b2a954ccfd7
+df_candidatos2020 = df_2020[!, colunas_de_interesse]
 
-Exercício: Dividir 1º e 2º turno.
+# ╔═╡ 7a306c4a-48d9-4b0d-a2ab-91b1ddff19a7
+df_prefeitos_1turno = df_candidatos2020[
+	(df_candidatos2020.DS_CARGO .== "Prefeito") .& (df_candidatos2020.NR_TURNO .== 1), :]
+
+# ╔═╡ 3267fcc7-9dbd-4636-b2bf-07366a3fcb41
+df_prefeitos_2turno = df_candidatos2020[
+	(df_candidatos2020.DS_CARGO .== "Prefeito") .& (df_candidatos2020.NR_TURNO .== 2), :]
+
+# ╔═╡ 724b8164-e789-4170-94a6-7bb62cdd3faf
+df_vereador = df_candidatos2020[df_candidatos2020.DS_CARGO .== "Vereador", :]
+
+# ╔═╡ 906012a6-ece8-4191-b4a0-f6db945425a9
+begin 
+	df_prefeitos = df_candidatos2020[df_candidatos2020.DS_CARGO .== "Prefeito", :]
+	first(df_prefeitos, 4)
+end
+
+# ╔═╡ 73c70882-d958-47e2-acdf-728fea0c0626
+md"""
+##### Exercício:
+Crie dataframes separando as linhas de candidatos a prefeito no 1º e 2º turnos como *views* (sem cópia).
 """
 
 # ╔═╡ 2f455d6e-ac9f-433a-ae4f-e03e469c8767
@@ -124,18 +155,72 @@ md"""
 #### Que tal agrupar todas as zonas eleitorais de cada cidade?
 """
 
+# ╔═╡ fe6f5082-33b0-404c-9162-35fcfee6f75e
+df_maisvotados = combine(
+		first, 
+		@chain df_prefeitos begin
+			groupby([:CD_MUNICIPIO, :NR_CANDIDATO])
+			combine(Not(:NR_ZONA), :QT_VOTOS_NOMINAIS => sum => :QT_VOTOS_NOMINAIS)
+			sort(:QT_VOTOS_NOMINAIS, rev=true)
+			groupby(:CD_MUNICIPIO)
+		end
+)
+
+# ╔═╡ 624379e8-9ed3-42bd-8bdc-2a2a303552cb
+partidos = sort(combine(nrow, groupby(df_maisvotados, :SG_PARTIDO)), :nrow, rev=true)
+
 # ╔═╡ 0fa7caca-2570-4b88-bf46-88984738a05b
 plotlyjs()
+
+# ╔═╡ d4095e5f-46f9-4238-b62f-d7b6b06e1964
+Plots.bar(partidos.nrow, xticks = (1:29, partidos.SG_PARTIDO), 
+	title="Partido mais votado (prefeito) no Brasil",
+	xrotation=90,
+	label="vitórias"
+)
+
+# ╔═╡ 3bb565d0-52a2-4596-99ea-78d98440590a
+first(df_prefeitos, 3)
 
 # ╔═╡ 153b4801-f6cd-44cc-9b28-6c5d65819f42
 partidos_url = "https://raw.githubusercontent.com/programacaodinamica/analise-dados/master/dados/partidos2020%20.csv"
 
-# ╔═╡ c97c205e-7fdd-468c-b4bf-cb4c4408815f
-# Downloads.download(partidos_url, joinpath(DATA_DIR, "partidos.csv"))
+# ╔═╡ 3bdc6b62-cae2-4270-9721-3f539c461b14
+df_partidos = CSV.read(joinpath(DATA_DIR, "partidos.csv"), DataFrame)
+
+# ╔═╡ e37ebd48-dbbc-453d-a35a-8d46568a6d8b
+begin
+	df_espectro = leftjoin(df_partidos, partidos, on=:SG_PARTIDO)
+	df_espectro.nrow = replace(df_espectro.nrow, missing => 0)
+	df_espectro
+end
+
+# ╔═╡ 2084e742-7d39-419d-9d28-73f658d4d09e
+cor(x) = if x == "esquerda"
+	:red
+elseif x == "direita"
+	:blue
+else
+	:gray
+end
+
+# ╔═╡ 89b14d8f-1544-44df-8196-c98006480c82
+df_partidos_v2 = @chain df_espectro begin
+	select(Between(:Espectro, :nrow), :Espectro => (x -> cor.(x)) => :cor)	
+	sort(:nrow, rev=true)
+	unique()
+end
 
 # ╔═╡ 3acef225-8e7a-4191-9039-5fc3e9f014e0
 md"""
-Ex: Quantos candidatos a vereador não tiveram nenhum voto?
+**Exercício:** 
+
+* Quantos candidatos a vereador não tiveram nenhum voto?
+
+**Desafio**
+
+Conseguiria visualizar o gráfico de barras feito acima pintando a barra relativa a  cada partido com a cor da coluna **cor**?
+
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -1203,19 +1288,34 @@ version = "0.9.1+5"
 # ╟─ad04f67f-2852-472c-a8c3-ec5dc3f68e6a
 # ╟─e9ef3a97-3732-4ca8-9b4a-ef77b7a5c175
 # ╟─eb67b3ce-993b-4f7e-9f7f-dec89a21d009
-# ╠═93c33e9a-b6ce-4cab-8126-3fa4a99c03eb
+# ╟─93c33e9a-b6ce-4cab-8126-3fa4a99c03eb
 # ╠═eeea85e4-53da-49c9-8fe1-0d568c23e33e
 # ╠═1aec1f8f-2e27-46c9-be9d-d779869cc516
-# ╟─5c0be0fa-8314-4304-8691-c7090bb27f2b
+# ╟─7b1312fc-292b-488b-a653-b0661837b0b8
+# ╠═dffbdc65-38cb-4466-b2b5-d4977a544611
+# ╠═5467bec3-ba98-4405-a109-28aed6c079a7
+# ╠═6c6b5e7c-81f1-4301-8433-75c66761e535
 # ╟─d8984c56-c253-4c09-9693-d05bc5ae502b
 # ╠═927aef8a-23fa-403e-ad9e-23daf47fa813
 # ╟─626584bd-19ed-46a2-badf-e2a25c78f4b9
 # ╟─02b5ca5a-ff48-474d-894b-3328990bef51
-# ╟─464d14bc-96a0-413f-b716-2d4807388587
+# ╠═8795beee-3124-425d-9b6a-1b2a954ccfd7
+# ╠═7a306c4a-48d9-4b0d-a2ab-91b1ddff19a7
+# ╠═3267fcc7-9dbd-4636-b2bf-07366a3fcb41
+# ╠═724b8164-e789-4170-94a6-7bb62cdd3faf
+# ╠═906012a6-ece8-4191-b4a0-f6db945425a9
+# ╟─73c70882-d958-47e2-acdf-728fea0c0626
 # ╟─2f455d6e-ac9f-433a-ae4f-e03e469c8767
+# ╠═fe6f5082-33b0-404c-9162-35fcfee6f75e
+# ╠═624379e8-9ed3-42bd-8bdc-2a2a303552cb
 # ╠═0fa7caca-2570-4b88-bf46-88984738a05b
+# ╠═d4095e5f-46f9-4238-b62f-d7b6b06e1964
+# ╠═3bb565d0-52a2-4596-99ea-78d98440590a
 # ╠═153b4801-f6cd-44cc-9b28-6c5d65819f42
-# ╠═c97c205e-7fdd-468c-b4bf-cb4c4408815f
+# ╠═3bdc6b62-cae2-4270-9721-3f539c461b14
+# ╠═e37ebd48-dbbc-453d-a35a-8d46568a6d8b
+# ╠═2084e742-7d39-419d-9d28-73f658d4d09e
+# ╠═89b14d8f-1544-44df-8196-c98006480c82
 # ╟─3acef225-8e7a-4191-9039-5fc3e9f014e0
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
